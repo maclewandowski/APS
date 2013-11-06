@@ -1,4 +1,4 @@
-ï»¿/* APS 
+/* APS 
  * CoffmanGraham
  * 
  * Encrypted.pl
@@ -167,8 +167,6 @@ namespace CoffmanGraham
             List<int[]> Result = new List<int[]>();
             List<int> Done = new List<int>();
 
-            // lets make array of list
-            // lists will contains all pre's
             for (int i = 0; i < size; i++)
             {
                 List<int> Q = new List<int>();
@@ -182,18 +180,38 @@ namespace CoffmanGraham
                 P[i] = Q;
             }
 
-            // while there are still some vertex to process
+            // wypisaæ P[i] test
+            Console.WriteLine("--P--");
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write("{0} : ", i);
+                foreach (int test in P[i])
+                {
+                    Console.Write("{0} ", test);
+                }
+                Console.WriteLine("");
+            }
+
             while (Done.Count < size)
             {
-                // List of vertex in this time quantum, where pre's amount = 0
+                // P[i] to lista niewykonanych poprzednikow wierzcholka i
+
                 List<int> Free = new List<int>();
 
+                // do Free wrzuciæ wszystkie ktore moga byc wykonane w tym kroku
                 for (int i = 0; i < size; i++)
                 {
                     if ((P[i].Count == 0)&&(Done.IndexOf(i) == -1)) Free.Add(i);
                 }
-                
-                // get m first from Free and "process" them
+                // wypisanie Free test
+                Console.WriteLine("--FREE--");
+                foreach (int test in Free)
+                {
+                    Console.Write("{0} ", test);
+                }
+                Console.WriteLine("");
+
+                // dodac do Result m pierwszych z Free i dodac do Done
                 int[] tmp = new int[m];
                 for (int i = 0; i < m; i++)
                 {
@@ -204,18 +222,35 @@ namespace CoffmanGraham
                     }
                     else
                     {
-                        tmp[i] = -1;
+                        tmp[i] = 0;
                     }
                 }
-
-                // add array to Result;
                 Result.Add(tmp);
-                
-                // delete all in Done from P[i]
+                // wypisanie Done test
+                Console.WriteLine("--DONE--");
+                foreach (int test in Done)
+                {
+                    Console.Write("{0} ", test);
+                }
+                Console.WriteLine("");
+
+                // wykasowanie z P[i] wszystkiego co jest w Done
                 for (int i = 0; i < size; i++)
                 {
                     foreach (int done in Done)
                         P[i].Remove(done);
+                }
+
+                // wypisaæ P[i] test
+                Console.WriteLine("--P--");
+                for (int i = 0; i < size; i++)
+                {
+                    Console.Write("{0} : ", i);
+                    foreach (int test in P[i])
+                    {
+                        Console.Write("{0} ", test);
+                    }
+                    Console.WriteLine("");
                 }
             }
             

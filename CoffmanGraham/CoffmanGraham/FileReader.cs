@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* APS 
+ * CoffmanGraham
+ * 
+ * Encrypted.pl
+ * maciej@encrypted.pl
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
