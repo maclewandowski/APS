@@ -1,6 +1,8 @@
-﻿/* APS 
+﻿/*
+ * APS 
  * CoffmanGraham
  * 
+ * Maciej Lewandowski
  * Encrypted.pl
  * maciej@encrypted.pl
  */
@@ -15,6 +17,38 @@ namespace CoffmanGraham
 {
     class FileReader
     {
+        // print Cmax, labels and processors into file
+        public void printResult(List<int[]> Result, int[] labels, int m, string file)
+        {
+            FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine("{0};", Result.Count);
+
+            // labels
+            sw.Write("L;");
+            int vertex = new int();
+            foreach (int label in labels)
+            {
+                sw.Write(" {0} ({1});", ++vertex, label);
+            }
+            sw.WriteLine("");
+
+            // foreach processor WriteLine
+            for (int i = 0; i < m; i++)
+            {
+                sw.Write("P{0};", i+1);
+                foreach (int[] result in Result)
+                {
+                    sw.Write(" {0};", result[i]+1);
+                }
+                sw.WriteLine("");
+            }
+
+            sw.Close();
+            fs.Close();
+        }
+
+        // get Words (edges tbh)
         public string[] getWords(string file)
         {
             FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -35,6 +69,7 @@ namespace CoffmanGraham
             return errors;
         }
 
+        // how many vertex we will process?
         public int getWordsSize(string file)
         {
             string[] words = getWords(file);
@@ -44,6 +79,7 @@ namespace CoffmanGraham
             return size;
         }
 
+        // splik Word (edge) into two vertex
         public int[,] parseWords(string[] words, int size)
         {
             int[,] conseq = new int[size, size];

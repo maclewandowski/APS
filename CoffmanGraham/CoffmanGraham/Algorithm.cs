@@ -1,6 +1,8 @@
-﻿/* APS 
+﻿/*
+ * APS 
  * CoffmanGraham
  * 
+ * Maciej Lewandowski
  * Encrypted.pl
  * maciej@encrypted.pl
  */

@@ -1,6 +1,8 @@
-﻿/* APS 
- * CoffmanGraham 
+﻿/*
+ * APS 
+ * CoffmanGraham
  * 
+ * Maciej Lewandowski
  * Encrypted.pl
  * maciej@encrypted.pl
  */
@@ -18,7 +20,8 @@ namespace CoffmanGraham
         {
 
             // configuration
-            string file_name = "input.txt";
+            string input = "input.txt";
+            string output = "output.txt";
 
             // our reading object
             FileReader File = new FileReader();
@@ -27,8 +30,8 @@ namespace CoffmanGraham
             Algorithm Alg = new Algorithm();
 
             // grab data from text file
-            string[] words = File.getWords(file_name);
-            int size = File.getWordsSize(file_name);
+            string[] words = File.getWords(input);
+            int size = File.getWordsSize(input);
             
             // array of final labels
             int[] labels = new int[size];
@@ -55,14 +58,7 @@ namespace CoffmanGraham
             // Hu
             List<int[]> Result = Alg.algorithmHu(conseq, labels, size, 2);
 
-            Console.WriteLine("-- FINAL RESULT --");
-
-            foreach (int[] attime in Result)
-            {
-                Console.WriteLine("{0} {1}", attime[0], attime[1]);
-            }
-            
-            string waiter = Console.ReadLine();
+            File.printResult(Result, labels, 2, output);
         }
     }
 }
