@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+* APS
+* Priority Queue Couriers
+*
+* Maciej Lewandowski
+* Encrypted.pl
+* maciej@encrypted.pl
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,7 +73,7 @@ namespace Couriers
                 }
             }
 
-            fr.printResults("export.txt", results);
+            fr.printResults("output.txt", results);
 
             Console.ReadKey();
         }

@@ -1,11 +1,11 @@
 ﻿/*
- * APS 
- * CoffmanGraham
- * 
- * Maciej Lewandowski
- * Encrypted.pl
- * maciej@encrypted.pl
- */
+* APS
+* Priority Queue Couriers
+*
+* Maciej Lewandowski
+* Encrypted.pl
+* maciej@encrypted.pl
+*/
 
 using System;
 using System.Collections.Generic;
