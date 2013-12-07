@@ -24,14 +24,25 @@ namespace Couriers
 
         static void Main(string[] args)
         {
+            // create objects
             PriorityQueue<int> pq = new PriorityQueue<int>();
             FileReader fr = new FileReader();
 
+            // read list of commands
             List<List<int>> commands = fr.getCommands("input.txt");
+
+            // prepare list of results
             List<int[]> results = new List<int[]>();
             
+            // prepare list of couriers
             List<PriorityQueue<int>> couriers= new List<PriorityQueue<int>>();
 
+            /*
+             * loop thru commands
+             * 
+             * commands are "documented" in FileReader.cs
+             * 
+             */ 
             foreach (List<int> command in commands)
             {
                 if (command[0] == 1)
@@ -73,9 +84,10 @@ namespace Couriers
                 }
             }
 
+            // print results
             fr.printResults("output.txt", results);
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         /*

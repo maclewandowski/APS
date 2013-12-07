@@ -17,7 +17,7 @@ namespace Couriers
 {
     class FileReader
     {
-        // print Cmax, labels and processors into file
+        // prints results into file
         public void printResults(string file, List<int[]> results)
         {
             FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write);
